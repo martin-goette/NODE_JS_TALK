@@ -29,14 +29,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3785425">
-              <caret line="161" column="51" selection-start-line="161" selection-start-column="51" selection-end-line="161" selection-end-column="51" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#section#6;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -284,6 +282,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5c2e3c45-9524-42fb-ae72-58d4e023d423" name="Default" comment="" />
@@ -317,6 +318,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1165,8 +1174,62 @@
         <state vertical-scroll-proportion="0.3785425">
           <caret line="161" column="51" selection-start-line="161" selection-start-column="51" selection-end-line="161" selection-end-column="51" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#section#6;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1447870732000" expanded="true" signature="31:6311" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="39:1197" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="460:565" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="820:1107" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1116:1187" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1205:6303" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1227:5168" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1331:5161" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1361:1564" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1443:1549" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1595:4214" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1611:1671" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1688:2178" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1839:1957" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="1986:2091" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2120:2161" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2195:2571" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2588:3123" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2649:2909" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2678:2903" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2938:3106" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2956:3093" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="2994:3074" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="3140:3421" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="3438:4047" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="3565:3584" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="3606:4017" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="3641:4011" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4064:4199" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4147:4160" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4229:5152" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4245:4448" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4464:4549" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4565:5137" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="4642:5120" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="5259:6294" placeholder="..." />
+            <marker date="1447870732000" expanded="true" signature="5264:5371" placeholder="//..." />
+            <marker date="1447870732000" expanded="true" signature="5392:6282" placeholder="{&quot;controls&quot;: true...}" />
+            <marker date="1447870732000" expanded="true" signature="5589:6278" placeholder="[...]" />
+            <marker date="1447870732000" expanded="true" signature="5597:5716" placeholder="{&quot;src&quot;: 'lib/js/classList.js'...}" />
+            <marker date="1447870732000" expanded="true" signature="5658:5708" placeholder="{...}" />
+            <marker date="1447870732000" expanded="true" signature="5724:5868" placeholder="{&quot;src&quot;: 'plugin/markdown/marked.js'...}" />
+            <marker date="1447870732000" expanded="true" signature="5791:5860" placeholder="{...}" />
+            <marker date="1447870732000" expanded="true" signature="5876:6022" placeholder="{&quot;src&quot;: 'plugin/markdown/markdown.js'...}" />
+            <marker date="1447870732000" expanded="true" signature="5945:6014" placeholder="{...}" />
+            <marker date="1447870732000" expanded="true" signature="6030:6169" placeholder="{&quot;src&quot;: 'plugin/highlight/highlight.js'...}" />
+            <marker date="1447870732000" expanded="true" signature="6113:6161" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
