@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
 
   <!-- Code syntax highlighting -->
-  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="lib/css/ocean.css">
 
   <!-- Printing and PDF exports -->
   <script>
@@ -73,27 +73,46 @@
 
       <section>
         <h3>Why is it so popular?</h3>
-        <p class="fragment">It's just JavaScript</p>
         <p class="fragment">Minimal core functionality exposes minimum amount of complexity by default</p>
         <p class="fragment">Easily extendable by using third-party modules</p>
         <p class="fragment">Get it up and running is a matter of minutes ...</p>
+        <p class="fragment">It's just JavaScript</p>
       </section>
 
       <section>
-        <h3>... minutes?</h3>
+        <h3>Javascript is the top language on github.com since 2013</h3>
+        <img style="width: 100%" src="images/gh.jpg" alt="">
+      </section>
+
+      <section>
+        <p>But isn't JavaScript this hacky language that was created in 10 days back in 1995 by some guy at Netscape? Why would anyone want to work with that?</p>
+        <p class="fragment"><strong>Because it has come a long way since then!</strong></p>
+        <p class="fragment">ECMAScript 5 & <strong>ECMAScript 6</strong> (aka. ECMAScript 2015)</p>
+        <pre class="fragment"><code data-trim class="javascript">
+const activeQuestions = questionsMap
+  .map(obj => obj.questions.filter(el => el.active)
+  .reduce((a, b) => a.concat(b), [])
+  .map(obj => obj.question);
+        </code></pre>
+        <p class="fragment"><small>We write everything in ES6 (& some early ES7) - code gets automatically transpiled to ES5 to make older browsers happy.</small></p>
+        <p class="fragment"><small>Additional tools like eslint, flow (static type checker) or jscs (codestyle checker) enable strict rules to improve code quality, if needed.</small></p>
+      </section>
+
+      <section>
+        <h3>Setting up Node.js is a matter of minutes?</h3>
         <pre class="fragment"><code data-trim class="bash">
-  # Inside (OS X) terminal
-  curl -L http://git.io/n-install | bash
-  n latest
+# Inside (OS X) terminal
+$ curl -L http://git.io/n-install | bash
+$ n latest
 
-  # Verify
-  node -v # 5.1.0
-  npm -v # 3.3.12
+# Verify
+$ node -v # 5.1.0
+$ npm -v # 3.3.12
 
-  # Use it on the console
-  node
-  > console.log('Hello World!');
-  Hello World!
+# Use it on the console
+$ node
+> console.log('Hello World!');
+Hello World!
         </code></pre>
         <p class="fragment">
           <small>Yes there is also an installer at: <a
@@ -107,6 +126,7 @@
         <p class="fragment">"NODE PACKAGE MANAGER"</p>
         <p class="fragment">Global and local (project level) mode</p>
         <p class="fragment">Install, update, uninstall (...) node_modules</p>
+        <p class="fragment">Custom run scripts</p>
       </section>
 
       <section>
@@ -114,8 +134,7 @@
 
         <p class="fragment"><i>Package.json</i>!</p>
 
-        <p class="fragment">Example:
-          <pre class="fragment"><code data-trim class="javascript">
+        <pre class="fragment"><code data-trim class="javascript">
 {
   "name": "ContentFE",
   ...
@@ -130,37 +149,73 @@
   "scripts": {
     "stage": "NODE_ENV=stage node ./build/server/start",
     "test": "mocha --recursive --compilers js:babel/register",
-    "start": "npm run watch:client && npm run watch:server",
-    ...
+    "start": "npm run watch:client",
+    "watch:client": "node node_modules/.bin/webpack-dev-server",
 }
-          </code></pre>
-        </p>
+        </code></pre>
       </section>
 
       <section>
         <h3>That's very easy to manage and maintain ...</h3>
-        <img style="height: 450px" src="images/zen.gif">
+        <img style="height: 500px" src="images/zen.gif">
       </section>
     </section>
 
     <section>
       <section>
         <h2>Where and how do we use it?</h2>
-        <p class="fragment">Right here, this presentation is basically a Nodejs app, including a basic http server, running on port 8000</p>
+      </section>
+      <section>
+        <h3>Right here!</h3>
+        <p class="fragment">This presentation is a Node.js app, including a basic http server, running on port 8000</p>
+        <pre class="fragment"><code data-trim class="javascript">
+// start.js
+import http from 'http';
+
+function handleRequest(request, response) {
+  response.end(`It Works!! Path Hit: ${request.url}`);
+}
+
+const PORT = 8000;
+const server = http.createServer(handleResponse);
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${POST}`);
+});
+        </code></pre>
+        <pre class="fragment"><code data-trim class="bash">
+# Start the server
+$ node ./start.js
+Server is running on http://localhost:8000
+        </code></pre>
       </section>
       <section>
         <h2>Is that all?</h2>
         <h2 class="fragment">No!</h2>
       </section>
       <section>
-        <h3>Literally everything we do is based on Node.js</h3>
+        <h3>Literally <u>everything</u> we do is based on Node.js</h3>
         <ul>
-          <p class="fragment">Our local dev environment (linting, test runner, coverage, compiling, building, watching, hot reloading, ...)</p>
-          <p class="fragment">Everything on the server, including the server itself</p>
-          <p class="fragment">Everything javascript on the client</p>
-          <p class="fragment">... and even the SCSS to CSS conversion using the node-sass npm module</p>
-          <p class="fragment">(we have 0 html files)</p>
+          <li class="fragment">Everything on the server: <i>including the server itself</i></li>
+          <li class="fragment">Everything on the client: <i>all libraries get bundled into one JS file, we could even import core modules and use them</i></li>
+          <li class="fragment">Our local dev environment: <i>compiling, building, linting, test runner, coverage, watching, hot reloading, ...</i></li>
         </ul>
+      </section>
+      <section>
+        <h3>So just knowing JavaScript gives you super powers!</h3>
+        <p>
+          <img style="width: 50%" src="images/superpowers.gif" alt="" class="fragment">
+        </p>
+        <blockquote class="fragment">
+          "With great power comes great responsibility!"<br>
+          <small>-- Uncle Ben</small>
+        </blockquote>
+      </section>
+    </section>
+
+    <!-- #3 -->
+    <section>
+      <section>
+        <h2>OK, Let's be more specific!</h2>
       </section>
     </section>
   </div>
