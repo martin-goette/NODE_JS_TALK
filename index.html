@@ -59,45 +59,60 @@
       <section>
         <h3>About Node.js</h3>
 
-        <p class="fragment">First introduced at the European JSConf 2009 by Ryan Dahl</p>
-        <p class="fragment">
-          Combines Google’s V8 JavaScript engine (used by Chrome), an event loop and a low-level I/O API
-        </p>
-        <p class="fragment">
-          Event-driven, non-blocking infrastructure for building highly concurrent software
-        </p>
-        <p class="fragment">
-          Fast and scalable
-        </p>
+        <ul>
+          <li class="fragment">First introduced at the European JSConf 2009 by Ryan Dahl</li>
+          <li class="fragment">
+            Combines Google’s V8 JavaScript engine (used by Chrome), an event loop and a low-level I/O API
+          </li>
+          <li class="fragment">
+            Event-driven, non-blocking infrastructure for building highly concurrent software
+          </li>
+          <li class="fragment">
+            Fast and scalable
+          </li>
+        </ul>
+
       </section>
 
       <section>
         <h3>Why is it so popular?</h3>
-        <p class="fragment">Minimal core functionality exposes minimum amount of complexity by default</p>
-        <p class="fragment">Easily extendable by using third-party modules</p>
-        <p class="fragment">Get it up and running is a matter of minutes ...</p>
-        <p class="fragment">It's just JavaScript</p>
+        <ul>
+          <li class="fragment">Minimal core functionality exposes minimum amount of complexity by default</li>
+          <li class="fragment">Easily extendable by using third-party modules</li>
+          <li class="fragment">Single threaded & non-blocking</li>
+          <li class="fragment">Get it up and running is a matter of minutes ...</li>
+          <li class="fragment">It's just JavaScript</li>
+        </ul>
       </section>
 
       <section>
         <h3>Javascript is the top language on github.com since 2013</h3>
-        <img style="width: 100%" src="images/gh.jpg" alt="">
+        <p><img style="width: 100%" src="images/gh.jpg" alt=""></p>
       </section>
 
       <section>
-        <p>But isn't JavaScript this hacky language that was created in 10 days back in 1995 by some guy at Netscape? Why would anyone want to work with that?</p>
-        <p class="fragment"><strong>Because it has come a long way since then!</strong></p>
-        <p class="fragment">ECMAScript 5 & <strong>ECMAScript 6</strong> (aka. ECMAScript 2015)</p>
+        <h4><i>But isn't JavaScript this hacky language that was created in 10 days back in 1995 by some guy at Netscape? Why would anyone want to work with that?</i></h4>
+        <h4 class="fragment"><strong>Because it has come a long way since then!</strong></h4>
+      </section>
+      <section>
+        <h3>ECMAScript 5 & ECMAScript 6<br>(aka. ECMAScript 2015 / ES6)</h3>
         <pre class="fragment"><code data-trim class="javascript">
 const activeQuestions = questionsMap
   .map(obj => obj.questions.filter(el => el.active)
   .reduce((a, b) => a.concat(b), [])
   .map(obj => obj.question);
         </code></pre>
-        <p class="fragment"><small>We write everything in ES6 (& some early ES7) - code gets automatically transpiled to ES5 to make older browsers happy.</small></p>
-        <p class="fragment"><small>Additional tools like eslint, flow (static type checker) or jscs (codestyle checker) enable strict rules to improve code quality, if needed.</small></p>
+        <p class="fragment">
+          <small><i>Similarities to Java8 are purely accidental...</i></small>
+        </p>
       </section>
-
+      <section>
+        <ul>
+          <li>We write everything in ES6 (& some early ES7) - code gets automatically transpiled to ES5 to make older browsers happy.</li>
+          <li class="fragment">Additional tools like eslint, flow (static type checker) or jscs (codestyle checker) enable strict rules to improve code quality, if needed.</li>
+          <li class="fragment">We can make JavaScript behave like a <i>real</i> language pretty easily.</li>
+        </ul>
+      </section>
       <section>
         <h3>Setting up Node.js is a matter of minutes?</h3>
         <pre class="fragment"><code data-trim class="bash">
@@ -115,7 +130,7 @@ $ node
 Hello World!
         </code></pre>
         <p class="fragment">
-          <small>Yes there is also an installer at: <a
+          <small>Yes, there is also an installer at: <a
               href="http://nodejs.org/#download">http://nodejs.org/#download</a>
           </small>
         </p>
@@ -123,17 +138,17 @@ Hello World!
 
       <section>
         <h3>What was this "npm" in the previous screen?</h3>
-        <p class="fragment">"NODE PACKAGE MANAGER"</p>
-        <p class="fragment">Global and local (project level) mode</p>
-        <p class="fragment">Install, update, uninstall (...) node_modules</p>
-        <p class="fragment">Custom run scripts</p>
+        <ul>
+          <li class="fragment">"NODE PACKAGE MANAGER"</li>
+          <li class="fragment">Global (system level) and local (project level) mode</li>
+          <li class="fragment">Install, update, uninstall (...) node_modules</li>
+          <li class="fragment">Custom run scripts</li>
+        </ul>
       </section>
 
       <section>
         <h3>How is a project managed?</h3>
-
-        <p class="fragment"><i>Package.json</i>!</p>
-
+        <p class="fragment"><i>package.json</i>!</p>
         <pre class="fragment"><code data-trim class="javascript">
 {
   "name": "ContentFE",
@@ -154,7 +169,6 @@ Hello World!
 }
         </code></pre>
       </section>
-
       <section>
         <h3>That's very easy to manage and maintain ...</h3>
         <img style="height: 500px" src="images/zen.gif">
@@ -167,7 +181,10 @@ Hello World!
       </section>
       <section>
         <h3>Right here!</h3>
-        <p class="fragment">This presentation is a Node.js app, including a basic http server, running on port 8000</p>
+        <div>
+          <p class="fragment">
+            This presentation is a Node.js app, including a basic http server, running on port 8000</div>
+          </p>
         <pre class="fragment"><code data-trim class="javascript">
 // start.js
 import http from 'http';
@@ -187,6 +204,7 @@ server.listen(PORT, () => {
 $ node ./start.js
 Server is running on http://localhost:8000
         </code></pre>
+        <div></div>
       </section>
       <section>
         <h2>Is that all?</h2>
@@ -201,14 +219,17 @@ Server is running on http://localhost:8000
         </ul>
       </section>
       <section>
-        <h3>So just knowing JavaScript gives you super powers!</h3>
-        <p>
-          <img style="width: 50%" src="images/superpowers.gif" alt="" class="fragment">
+        <h3>So just knowing JavaScript gives you super powers?</h3>
+        <p class="fragment">
+          <img style="width: 48%" src="images/superpowers.gif" alt=""><br>
+          <small>Yup! But ...</small>
         </p>
-        <blockquote class="fragment">
-          "With great power comes great responsibility!"<br>
-          <small>-- Uncle Ben</small>
-        </blockquote>
+        <p>
+          <blockquote class="fragment">
+            "With great power comes great responsibility!"<br>
+            <small>-- Uncle Ben</small>
+          </blockquote>
+        </p>
       </section>
     </section>
 
@@ -217,6 +238,135 @@ Server is running on http://localhost:8000
       <section>
         <h2>OK, Let's be more specific!</h2>
       </section>
+      <section>
+        <h3>Server side</h3>
+        <ul>
+          <li class="fragment">Host the application - <i>using express.js</i></li>
+          <li class="fragment">Talk to the backend - <i>and handle misunderstandings</i></li>
+          <li class="fragment">Manage authentication - <i>i.e. block disallowed proxy calls</i></li>
+          <li class="fragment">Hold the user session - <i>currently in a redis store</i></li>
+          <li class="fragment">Manage translations, csv import / export, environments, clustering, <strike>WebSockets</strike> ...</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Server side: BE Calls using native Promises</h3>
+        <ul>
+          <li class="fragment">Reliable <u>serial and parallel</u> http requests</li>
+          <li class="fragment">Conistent error handling and normalization</li>
+          <li class="fragment">Non blocking = longer response times of single requests don't block thread</li>
+          <li class="fragment">... and it's very easy on the eyes</li>
+        </ul>
+      </section>
+      <section>
+        <h4>Server side: BE Calls using native Promises (serial) - Create and load briefing</h4>
+        <pre><code style="max-height: 600px" data-trim class="javascript">
+// POST to create briefing
+function createBriefing() { ... }
+
+// GET with response.id
+function getBriefingObj(response) { ... }
+
+// Return retrieved briefingObj as JSON
+function returnFinalResponse(response) {
+  return res.status(200).json(response);
+}
+
+// If something went wrong anywhere, tell the client
+function handleError(err) {
+  return res.status(500).json({error: err});
+}
+
+// Make it happen
+Promise.resolve()
+  .then(createBriefing)
+  .then(getBriefingObj)
+  .then(returnFinalResponse)
+  .catch(handleError);
+        </code></pre>
+      </section>
+      <section>
+        <h4>Server side: BE Calls using native Promises (parallel)</h4>
+        <pre><code style="max-height: 600px" data-trim class="javascript">
+Promise
+  .all([
+    getVisibility,
+    getGoogleUpdates
+  ])
+  .then(
+    bodyArr => {
+      const responseArr = bodyArr.reduce((arr, body) => {
+        arr.push(body);
+        return arr;
+      }, []);
+
+      return res.status(200).json(responseArr);
+    }
+  )
+  .catch(handleError);
+        </code></pre>
+      </section>
+      <section>
+        <h3>Server side: Blocking unauthenticated API calls</h3>
+        <ul>
+          <li class="fragment">All client calls go to /api, which is a server side route</li>
+          <li class="fragment">So if user is not logged in it should block</li>
+        </ul>
+        <pre class="fragment"><code style="max-height: 600px" data-trim class="javascript">
+
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/');
+}
+
+function apiRouteHandler() { /* Go to service */ }
+
+router.route('/api/:serviceId').all(
+  isAuthenticated,
+  apiRouteHandler
+);
+        </code></pre>
+      </section>
+    </section>
+    <section>
+      <h3>Client side & Local dev environment</h3>
+      <ul>
+        <li class="fragment"><a href="http://webpack.github.io">Webpack!</a> - compiles node modules so the browser can use them. This encourages the use of small testable functions and files</li>
+        <li class="fragment">Libraries (D3, React, Lodash), modules, bootstrap - everything is installed via npm</li>
+        <li class="fragment">JSX (React's 'html') needs a compile step to be understood by the browser - done by Webpack</li>
+        <li class="fragment">SASS is compiled to CSS via node-sass</li>
+        <li class="fragment">File operations (copy, move, rename, delete) are done by npm run scripts</li>
+      </ul>
+    </section>
+    <section>
+      <h3>So Client & Server have been married</h3>
+      <p>
+        <img class="fragment" style="width: 60%" src="images/married.gif" alt="">
+      </p>
+    </section>
+    <section>
+      <h3>There's plenty of benefits to this marriage</h3>
+      <ul>
+        <li class="fragment">We can use helper functions on the client or the server, without even touching the files</li>
+        <li class="fragment">If a transformation gets too expensive on the client, we can just move it to the server, or vice versa</li>
+        <li class="fragment">Everything is consistent - <i>we even have a naming convention to distinguish ClientSide.js and serverSide.js files</i></li>
+        <li class="fragment">We only write in ONE language - <i>CSS is not a language, right?</i></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Is this the future?</h3>
+      <p class="fragment">Maybe, but there is much more to come</p>
+      <ul>
+        <li class="fragment">Isomorphic applications - <i>dynamically render parts of React on the server and others on the client</i></li>
+        <li class="fragment">GraphQL/Relay - <i>the next version of Flux, application shares state between client and server and is always in sync</i></li>
+        <li class="fragment">Use WebSockets as a notification system - <i>this can be set up in literally 10 lines of code</i></li>
+        <li class="fragment">Store parts of information in localStorage (we already do that)</li>
+      </ul>
+    </section>
+    <section>
+      <p>
+        <img style="width: 60%" src="images/folks.gif" alt="">
+      </p>
     </section>
   </div>
 </div>
@@ -229,7 +379,7 @@ Server is running on http://localhost:8000
   // Full list of configuration options available at:
   // https://github.com/hakimel/reveal.js#configuration
   Reveal.initialize({
-    controls: true,
+    controls: false,
     progress: true,
     history: true,
     center: true,
