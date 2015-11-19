@@ -80,7 +80,8 @@
           <li class="fragment">Minimal core functionality exposes minimum amount of complexity by default</li>
           <li class="fragment">Easily extendable by using third-party modules</li>
           <li class="fragment">Single threaded & non-blocking</li>
-          <li class="fragment">Get it up and running is a matter of minutes ...</li>
+          <li class="fragment">Getting it up and running is a matter of minutes ...</li>
+          <li class="fragment">"Battle tested" by lots and lots of big apps - <i>paypal.com, yahoo.com, medium.com, linkedin.com, netflix.com, ...</i></li>
           <li class="fragment">It's just JavaScript</li>
         </ul>
       </section>
@@ -97,20 +98,22 @@
       <section>
         <h3>ECMAScript 5 & ECMAScript 6<br>(aka. ECMAScript 2015 / ES6)</h3>
         <pre class="fragment"><code data-trim class="javascript">
-const activeQuestions = questionsMap
-  .map(obj => obj.questions.filter(el => el.active)
-  .reduce((a, b) => a.concat(b), [])
-  .map(obj => obj.question);
+function getActiveQuestions() {
+  return questionsMap
+    .map(obj => obj.questions.filter(el => el.active)
+    .reduce((a, b) => a.concat(b), [])
+    .map(obj => obj.question);
+}
         </code></pre>
-        <p class="fragment">
-          <small><i>Similarities to Java8 are purely accidental...</i></small>
-        </p>
       </section>
       <section>
+        <h3>ECMAScript 6</h3>
         <ul>
-          <li>We write everything in ES6 (& some early ES7) - code gets automatically transpiled to ES5 to make older browsers happy.</li>
-          <li class="fragment">Additional tools like eslint, flow (static type checker) or jscs (codestyle checker) enable strict rules to improve code quality, if needed.</li>
-          <li class="fragment">We can make JavaScript behave like a <i>real</i> language pretty easily.</li>
+          <li>We write ES6 (& some early ES7)</li>
+          <li class="fragment">Code gets automatically transpiled to ES5 using <a href="https://babeljs.io">Babel.js</a></li>
+          <li class="fragment">Promises, Classes, Decorators, Template strings, (...)</li>
+          <li class="fragment"><a href="http://eslint.org">ESlint</a> (code quality checker), <a href="http://flowtype.org">flow</a> (static type checker) or <a href="http://jscs.info">jscs</a> (codestyle checker) enable strict rules to improve code quality, if needed</li>
+          <li class="fragment">We can make JavaScript behave like a <i>real grown up</i> language pretty easily</li>
         </ul>
       </section>
       <section>
@@ -143,6 +146,7 @@ Hello World!
           <li class="fragment">Global (system level) and local (project level) mode</li>
           <li class="fragment">Install, update, uninstall (...) node_modules</li>
           <li class="fragment">Custom run scripts</li>
+          <li class="fragment">Binaries get added to $PATH in run scripts</li>
         </ul>
       </section>
 
@@ -196,7 +200,7 @@ function handleRequest(request, response) {
 const PORT = 8000;
 const server = http.createServer(handleResponse);
 server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${POST}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
         </code></pre>
         <pre class="fragment"><code data-trim class="bash">
@@ -241,52 +245,62 @@ Server is running on http://localhost:8000
       <section>
         <h3>Server side</h3>
         <ul>
-          <li class="fragment">Host the application - <i>using express.js</i></li>
-          <li class="fragment">Talk to the backend - <i>and handle misunderstandings</i></li>
-          <li class="fragment">Manage authentication - <i>i.e. block disallowed proxy calls</i></li>
-          <li class="fragment">Hold the user session - <i>currently in a redis store</i></li>
-          <li class="fragment">Manage translations, csv import / export, environments, clustering, <strike>WebSockets</strike> ...</li>
+          <li class="fragment">Hosting the application - <i>using <a href="http://expressjs.com">express.js</a></i></li>
+          <li class="fragment">Talking to the backend via adhoc endpoints (for now) - <i>and handle misunderstandings</i></li>
+          <li class="fragment">Transforming BE responses - <i>according to the modules' needs</i></li>
+          <li class="fragment">Managing authentication - <i>i.e. block disallowed proxy calls</i></li>
+          <li class="fragment">Holding the user session - <i>currently in a redis store</i></li>
+          <li class="fragment">Streaming files / binaries - <i>we could also stream BE requests</i></li>
+          <li class="fragment">Handling the base routes (index, app, 404)</li>
+          <li class="fragment">Managing translations, csv import / export, environments, clustering, <strike>WebSockets</strike> ...</li>
         </ul>
       </section>
       <section>
         <h3>Server side: BE Calls using native Promises</h3>
         <ul>
-          <li class="fragment">Reliable <u>serial and parallel</u> http requests</li>
-          <li class="fragment">Conistent error handling and normalization</li>
+          <li class="fragment">Reliable synchronous & asynchronous http request chains</li>
+          <li class="fragment">Consistent error handling and normalization</li>
           <li class="fragment">Non blocking = longer response times of single requests don't block thread</li>
           <li class="fragment">... and it's very easy on the eyes</li>
         </ul>
       </section>
       <section>
-        <h4>Server side: BE Calls using native Promises (serial) - Create and load briefing</h4>
-        <pre><code style="max-height: 600px" data-trim class="javascript">
-// POST to create briefing
-function createBriefing() { ... }
+        <h4>Server side: BE Calls using native Promises (synchronous) - Create and load briefing</h4>
+        <pre><code style="max-height: 640px" data-trim class="javascript">
+// briefing/createSingleAndLoad.js
 
-// GET with response.id
-function getBriefingObj(response) { ... }
+export default (req, res) => {
 
-// Return retrieved briefingObj as JSON
-function returnFinalResponse(response) {
-  return res.status(200).json(response);
+  // POST to create briefing, returns promise
+  function createBriefing() { ... }
+
+  // GET with response.id, returns promise
+  function getBriefingObj(response) { ... }
+
+  // Return retrieved briefingObj as JSON
+  function returnFinalResponse(response) {
+    return res.status(200).json(response);
+  }
+
+  // If something went wrong anywhere, tell the client
+  function handleError(err) {
+    return res.status(500).json({error: err});
+  }
+
+  // Make it happen
+  Promise.resolve()
+    .then(createBriefing)
+    .then(getBriefingObj)
+    .then(returnFinalResponse)
+    .catch(handleError);
 }
-
-// If something went wrong anywhere, tell the client
-function handleError(err) {
-  return res.status(500).json({error: err});
-}
-
-// Make it happen
-Promise.resolve()
-  .then(createBriefing)
-  .then(getBriefingObj)
-  .then(returnFinalResponse)
-  .catch(handleError);
         </code></pre>
       </section>
       <section>
-        <h4>Server side: BE Calls using native Promises (parallel)</h4>
+        <h4>Server side: BE Calls using native Promises (asynchronous) - <br>SEO Visibilty with Google Updates Chart</h4>
         <pre><code style="max-height: 600px" data-trim class="javascript">
+// ...
+
 Promise
   .all([
     getVisibility,
@@ -309,7 +323,7 @@ Promise
         <h3>Server side: Blocking unauthenticated API calls</h3>
         <ul>
           <li class="fragment">All client calls go to /api, which is a server side route</li>
-          <li class="fragment">So if user is not logged in it should block</li>
+          <li class="fragment">So if user is not logged in, it should block</li>
         </ul>
         <pre class="fragment"><code style="max-height: 600px" data-trim class="javascript">
 
@@ -319,7 +333,7 @@ function isAuthenticated(req, res, next) {
   res.redirect('/');
 }
 
-function apiRouteHandler() { /* Go to service */ }
+function apiRouteHandler(req, res) { /* Make the request to BE */ }
 
 router.route('/api/:serviceId').all(
   isAuthenticated,
@@ -329,18 +343,39 @@ router.route('/api/:serviceId').all(
       </section>
     </section>
     <section>
-      <h3>Client side & Local dev environment</h3>
-      <ul>
-        <li class="fragment"><a href="http://webpack.github.io">Webpack!</a> - compiles node modules so the browser can use them. This encourages the use of small testable functions and files</li>
-        <li class="fragment">Libraries (D3, React, Lodash), modules, bootstrap - everything is installed via npm</li>
-        <li class="fragment">JSX (React's 'html') needs a compile step to be understood by the browser - done by Webpack</li>
-        <li class="fragment">SASS is compiled to CSS via node-sass</li>
-        <li class="fragment">File operations (copy, move, rename, delete) are done by npm run scripts</li>
-      </ul>
-    </section>
-    <section>
-      <h3>Client side: Flux & React</h3>
-      <p>Explain circle</p>
+      <section>
+        <h3>Client side & Local dev environment</h3>
+        <ul>
+          <li class="fragment"><a href="http://webpack.github.io">Webpack!</a> - compiles node modules so the browser can understand and use them</li>
+          <li class="fragment">Libraries (D3, React, Lodash), modules, bootstrap - everything is installed via npm</li>
+          <li class="fragment">JSX (React's 'html') needs a compile step to be understood by the browser - done by Webpack</li>
+          <li class="fragment">SASS is compiled to CSS via node-sass</li>
+          <li class="fragment">File operations (copy, move, rename, delete) are done by npm run scripts</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Client side: Flux & React</h3>
+        <p><blockquote>"<a href="https://facebook.github.io/flux">Flux</a> is the application architecture that Facebook uses for building client-side web applications. It complements <a href="https://facebook.github.io/react/">React's</a> composable view components by utilizing a unidirectional data flow."</blockquote></p>
+        <p><small><i>Apps using React:<br>netflix.com, airbnb.com, imdb.com, instagram.com,<br>whatsapp.com, messenger.com and many more ...</i></small></p>
+      </section>
+      <section>
+        <h3>Client side: Flux & React</h3>
+        <ul>
+          <li class="fragment">Single page app with client side routing, using <a href="https://github.com/rackt/react-router">react-router</a></li>
+          <li class="fragment">React views are highly efficient due to virtual dom diffing and very efficient DOM updates</li>
+          <li class="fragment">Small, decoupled & reusable components</li>
+          <li class="fragment">Clear, unidirectional data flow</li>
+          <li class="fragment">State of application is maintained in stores</li>
+          <li class="fragment">Flux uses native Node.js EventEmitter to dispatch events (actions) to the store</li>
+          <li class="fragment">Stores push updates to the view components</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Client side: Flux & React -<br>Flux cycle including server interaction</h3>
+        <p>
+          <img class="fragment" style="width: 70%" src="images/flux.png" alt="">
+        </p>
+      </section>
     </section>
     <section>
       <h3>So Client & Server have been married</h3>
@@ -352,20 +387,28 @@ router.route('/api/:serviceId').all(
       <h3>There's plenty of benefits to this marriage</h3>
       <ul>
         <li class="fragment">We can use helper functions on the client or the server, without even touching the files</li>
-        <li class="fragment">If a transformation gets too expensive on the client, we can just move it to the server, or vice versa</li>
         <li class="fragment">Everything is consistent - <i>we even have a naming convention to distinguish ClientSide.js and serverSide.js files</i></li>
+        <li class="fragment">Modular approach with small files reduces merge conflicts & scales well: More developers, more productivity</li>
+        <li class="fragment">Functional programming everywhere</li>
+        <li class="fragment">If i.e. a transformation gets too expensive on the client, we can just move it to the server, or vice versa</li>
+        <li class="fragment">The whole source code is spread across 3 folders: <br> <i>src/client, src/server, src/shared</i></li>
         <li class="fragment">We only write in ONE language - <i>CSS is not a language, right?</i></li>
       </ul>
     </section>
     <section>
       <h3>Is this the future?</h3>
-      <p class="fragment">Maybe, but there is much more to come</p>
+      <p class="fragment">Maybe, but there is much more to come:</p>
       <ul>
-        <li class="fragment">Isomorphic applications - <i>dynamically render parts of React on the server and others on the client</i></li>
-        <li class="fragment">GraphQL/Relay - <i>the next version of Flux, application shares state between client and server and is always in sync</i></li>
+        <li class="fragment">Isomorphic application - <i>dynamically render parts of React on the server and others on the client</i></li>
+        <li class="fragment"><a href="http://graphql.org">GraphQL</a> / <a href="https://facebook.github.io/relay/">Relay</a> - <i>the next version of Flux, application shares state between client and server and is always in sync</i></li>
         <li class="fragment">Use WebSockets as a notification system - <i>this can be set up in literally 10 lines of code</i></li>
-        <li class="fragment">Store parts of information in localStorage (we already do that)</li>
+        <li class="fragment">Store parts of information in localStorage (we already do that at times)</li>
+        <li class="fragment">Multiple entry points - <i>Only load the required .js files for the active section</i></li>
+        <li class="fragment">Create our own node modules for maximum reusability</li>
       </ul>
+    </section>
+    <section>
+      <h2>Questions, remarks, discussions, ...</h2>
     </section>
     <section>
       <p>
